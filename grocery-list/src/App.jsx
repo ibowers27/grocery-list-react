@@ -5,20 +5,15 @@ import './App.css';
 import GroceryItem from './components/GroceryItem';
 
 function App() {
-  const inputs = [
-    [true, 10],
-    [false, 5],
-    [true, 12],
-    [true, 9],
-  ]
+  const inputs = ["Cheese", "Cantaloupe"]
   
   return (
     <>
-      {inputs.map(([a, b], index) => (
+    <h1>Grocery List</h1>
+      {inputs.map((a, index) => (
         <GroceryItem
           key={index}
-          upOrDown={a}
-          valueBy={b}
+          itemName={a}
         ></GroceryItem>
       ))}
     </>

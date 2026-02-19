@@ -1,25 +1,34 @@
 import React, {useState} from "react";
 
-const GroceryItem = ({upOrDown, valueBy}) => {
+const GroceryItem = ({itemName}) => {
 
   const [count, setCount] = useState(0);
 
 
-  const handleCount = () => {
-    if (upOrDown) setCount(count+valueBy);
-    else setCount(count-valueBy);
+  const addToList = () => {
+    setCount(count+1);
   };
 
-  const handleClearCount = () => {
+  const removeFromList = () => {
+    if (count > 0) {
+        setCount(count-1);
+    };
+  };
+
+  const clearFromList = () => {
     setCount(count - count)
   };
 
   return (
-    <div className={upOrDown ? "up-div":"down-div"}>
-        <h1>React Day 1</h1>
-        <button onClick={handleCount}>Do Some Counting</button>
+    <div>
+        <p>{itemName}</p>
+        <div className ={"item-div"}>
+        <button onClick={addToList}>+</button>
         <p>{count}</p>
-        <button onClick={handleClearCount}>Clear</button>
+        <button onClick={removeFromList}>-</button>
+        <h1></h1>
+        </div>
+        <button onClick={clearFromList}>Clear</button>
     </div>
   );
 };

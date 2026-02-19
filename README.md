@@ -3,7 +3,7 @@
 ###
 Ivy Bowers
 
-This website is a grocery list manager made with React, keeping the frontend (UI) simple and user-friendly. It's okay of the items only contain text-based information (image is not a must). All componenets should have proper styles.
+This website is a grocery list manager made with React, keeping the frontend (UI) simple and user-friendly. It's okay if the items only contain text-based information (image is not a must). All components should have proper styles.
 
 ## Live Link:
 here
