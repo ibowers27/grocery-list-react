@@ -15,18 +15,6 @@
   flex-direction: row;
 }
 
-.down-div {
-  padding: 10px;
-  margin: 4px;
-  background-color: antiquewhite;
-}
-
-.up-div {
-  padding: 10px;
-  margin: 4px;
-  background-color: rgb(226, 215, 250);
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;

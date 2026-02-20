@@ -1,21 +1,67 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
+import { useState } from 'react'
 import './App.css';
 import GroceryItem from './components/GroceryItem';
 
 function App() {
-  const inputs = ["Cheese", "Cantaloupe"]
-  
+  const [items, setItems] = useState([]);
+  const [newItem, setNewItem] = useState('');
+
+  const addItem = () => {
+    const trimmed = newItem.trim();
+    if (!trimmed) return;
+    setItems([...items, { id: Date.now(), name: trimmed, count: 1 }]);
+    setNewItem('');
+  };
+
+  const deleteItem = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+
+  const updateItemName = (id, newName) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, name: newName } : item
+      )
+    );
+  };
+
+  const updateItemCount = (id, newCount) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, count: newCount } : item
+      )
+    );
+  };
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
   return (
     <>
     <h1>Grocery List</h1>
-      {inputs.map((a, index) => (
-        <GroceryItem
-          key={index}
-          itemName={a}
-        ></GroceryItem>
-      ))}
+    <p>{items.length} item{items.length !== 1 ? 's' : ''} · {totalCount} total</p>
+
+      <div className="item-div">
+        <input
+          type="text"
+          placeholder="Add a grocery item..."
+          value={newItem}
+          onChange={(e) => setNewItem(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && addItem()}
+        />
+        <button onClick={addItem}>+ Add</button>
+      </div>
+
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {items.map((item) => (
+          <GroceryItem
+            key={item.id}
+            item={item}
+            onDelete={deleteItem}
+            onUpdateName={updateItemName}
+            onUpdateCount={updateItemCount}
+          />
+        ))}
+      </ul>
     </>
   );
 }
