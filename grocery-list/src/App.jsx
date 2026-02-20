@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css';
 import GroceryItem from './components/GroceryItem';
+import groceryIcon from './assets/grocery-list-icon.png';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <>
+    <img src={groceryIcon} alt="Grocery list icon" style={{ width: 60, height: 60, borderRadius: 8 }} />
     <h1>Grocery List</h1>
     <p>{items.length} item{items.length !== 1 ? 's' : ''} · {totalCount} total</p>
 
